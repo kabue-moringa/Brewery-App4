@@ -2,7 +2,9 @@ package com.moringaschool.brewer_app;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -14,6 +16,7 @@ public class CompanyActivity  extends AppCompatActivity {
             "Carlsberg", "Groupe Castel", "Molson Coors Brewing", "Heineken",
             "Yanjing", " China Resources Snow Breweries", " Asahi", "Tsingtao Brewery Group",
     };
+    Button button;
 
     TextView textView;
 
@@ -29,8 +32,21 @@ public class CompanyActivity  extends AppCompatActivity {
         String company = intent.getStringExtra("company");
         textView=(TextView)findViewById(R.id.textView2) ;
         textView.setText("Largest Brewies");
+        button=findViewById(R.id.bestBreweriesButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bestBreweriesButton();
+
+            }
+        });
 
 
 //        String company = intent.getStringExtra("location");
+    }
+
+    private void bestBreweriesButton() {
+        Intent intent = new Intent(this, CompanyActivity2.class);
+        startActivity(intent);
     }
 }
