@@ -22,6 +22,21 @@
         android:textColor="@color/teal_700"
         android:text="Breweries company."/>
 
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name" />
+    <EditText
+        android:id="@+id/ login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="company" />
+
     <Button
         android:id="@+id/findCompanyButton"
         android:layout_width="wrap_content"
@@ -30,6 +45,7 @@
         android:background="@color/purple_700"
         android:layout_centerHorizontal="true"
         android:text="Find companies" />
+
 
 
 
