@@ -31,7 +31,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="97dp"
         android:background="@color/purple_500"
-        android:layout_marginBottom="250dp"
+        android:layout_marginBottom="215dp"
         android:padding="5dp"
         android:textStyle="bold"
         android:ems="10"
@@ -61,7 +61,7 @@
         android:layout_alignParentBottom="true"
         android:background="@color/purple_700"
         android:layout_centerHorizontal="true"
-        android:text="Find companies" />
+        android:text="login" />
 
 
 
