@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(MainActivity.this, CompanyActivity.class);
+
             startActivity(intent);
             Toast.makeText(MainActivity.this, "Hello World!", Toast.LENGTH_LONG).show();
         }
