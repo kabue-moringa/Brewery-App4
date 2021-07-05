@@ -26,11 +26,15 @@ public class MainActivity extends AppCompatActivity {
     mFindCompanyButton.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(MainActivity.this, CompanyActivity.class);
 
-            startActivity(intent);
-            Toast.makeText(MainActivity.this, "Hello World!", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(MainActivity.this, CompanyActivity.class);
+           intent.putExtra("name",name.getText().toString());
+          intent.putExtra("company",name.getText().toString());
+           startActivity(intent);
+
+
         }
+
     });
     }
 }
