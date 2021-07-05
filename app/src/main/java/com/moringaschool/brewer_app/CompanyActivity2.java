@@ -16,9 +16,9 @@ public class CompanyActivity2 extends AppCompatActivity {
     TextView textView;
     ListView listView;
 
-    private String[] company = new String[] {"Anheuser-Busch InBev.", "Tsingtao Brewery Group.",
-            "Carlsberg", "Groupe Castel", "Molson Coors Brewing", "Heineken",
-            "Yanjing", " China Resources Snow Breweries", " Asahi", "Tsingtao Brewery Group",
+    private String[] company = new String[] {"Cloudwater Brew Co.", " Founders Brewing Company (Michigan)",
+            "Firestone Walker Brewing (California)", " AleSmith Brewing Company (California) ", "Molson Coors Brewing", "Cigar City Brewing (Florida) ",
+            "Sante Adairius Rustic Ales ", "Tree House Brewing Company", "Trillium Brewing Company ", "Hill Farmstead Brewery",
     };
 
     @Override
