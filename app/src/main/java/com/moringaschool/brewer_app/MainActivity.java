@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
 
             Intent intent = new Intent(MainActivity.this, CompanyActivity.class);
-           intent.putExtra("name",name.getText().toString());
-          intent.putExtra("company",name.getText().toString());
+//           intent.putExtra("name",name.getText().toString());
+//          intent.putExtra("company",name.getText().toString());
            startActivity(intent);
 
 
