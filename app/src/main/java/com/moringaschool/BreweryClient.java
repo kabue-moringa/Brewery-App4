@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import static com.moringaschool.brewerydb.Constants.BREWERYDB_BASE_URL;
 
 public class BreweryClient {
-    private static Retrofit.Builder retrofit = null;
+    private static Retrofit retrofit = null;
 
    public static BreweryApi getClient(){
        if(retrofit == null){
@@ -17,14 +17,13 @@ public class BreweryClient {
                     retrofit = new Retrofit.Builder()
                                     .baseUrl(BREWERYDB_BASE_URL)
                                     .addConverterFactory(GsonConverterFactory.create())
-                                  
-
-
-
+                                     .build();
 
        }
+              return retrofit.create(BreweryApi.class);
 
     }
+
 
 
 
