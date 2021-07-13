@@ -23,30 +23,30 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="10dp"
-            android:text="obdb-id" />
+            android:text="obdb_id" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="name" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/brewery"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="brewery type" />
+            android:text="brewery_type" />
 
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/textphone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
             android:text="phone"/>
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/textaddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="4"

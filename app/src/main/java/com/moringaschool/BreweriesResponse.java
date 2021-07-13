@@ -223,9 +223,9 @@ public class BreweriesResponse {
         this.latitude = latitude;
     }
 
-    public Object getPhone() {
-        return phone;
-    }
+//    public CharSequence getPhone() {
+//        return phone;
+//    }
 
     public void setPhone(Object phone) {
         this.phone = phone;
