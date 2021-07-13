@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.moringaschool.models.BreweriesResponse;
 import com.moringaschool.brewer_app.R;
+import com.squareup.picasso.Picasso;
 //import com.moringaschool.brewerydb.R;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public class BeerAdapter extends RecyclerView.Adapter<BeerAdapter.BeerViewHolder
     private Context mContext;
 
 
-    public BeerAdapter(Context context, List<BreweriesResponse> mbrewery_type) {
+    public BeerAdapter(Context context, String mbrewery_type) {
         mContext = context;
         mbrewery_type = mbrewery_type;
     }

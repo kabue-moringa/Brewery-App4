@@ -1,33 +1,35 @@
-package com.moringaschool.brewerydb;
+package com.moringaschool.ui;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
-import android.telecom.Call;
-import android.view.View;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-
+import com.moringaschool.adapters.BeerAdapter;
+import com.moringaschool.brewer_app.CompanyActivity;
+import com.moringaschool.brewer_app.CompanyActivity2;
 import com.moringaschool.brewer_app.R;
+import com.moringaschool.brewerydb.Constants;
 import com.moringaschool.models.BreweriesResponse;
 import com.moringaschool.network.BreweryApi;
 import com.moringaschool.network.BreweryClient;
-import com.moringaschool.adapters.BeerAdapter;
+import com.moringaschool.ui.MainActivity;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import okhttp3.Callback;
-import okhttp3.Response;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
-public class MainActivity2 extends AppCompatActivity {
 
-
+public class  BeerType extends AppCompatActivity {
     @BindView(R.id.breweryrecyclerview)
-
     RecyclerView mRecyclerView;
     @BindView(R.id.errorTextView)
     TextView mErrorTextView;
@@ -35,7 +37,7 @@ public class MainActivity2 extends AppCompatActivity {
     ProgressBar mProgressBar;
 
     private BeerAdapter mAdapter;
-    public List<BreweriesResponse> mbrewery_type;
+    public String mbrewery_type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,20 +46,19 @@ public class MainActivity2 extends AppCompatActivity {
         ButterKnife.bind(this);
 
         BreweryApi client = BreweryClient.getClient();
-        Call<BreweriesResponse> call = client.getbreweries(Constants.BREWERYDB_BASE_URL);
+        Call<BreweriesResponse> call = client.getBreweryType();
 
         call.enqueue(new Callback<BreweriesResponse>() {
-
             @Override
-            public void onResponse(Call<BreweriesResponse> call, Response<BreweriesResponse> response) {
+            public void onResponse(Call<BreweriesResponse>call, Response<BreweriesResponse> response) {
                 hideProgressBar();
 
                 if (response.isSuccessful()) {
-                    mbrewery_type = response.body().BreweriesResponse;
-                    mAdapter = new BeerAdapter(MainActivity2.this, mbrewery_type);
+                    mbrewery_type = response.body().getBreweryType();
+                    mAdapter = new BeerAdapter(BeerType.this, mbrewery_type);
                     mRecyclerView.setAdapter(mAdapter);
                     RecyclerView.LayoutManager layoutManager =
-                            new LinearLayoutManager(MainActivity2.this);
+                            new LinearLayoutManager(BeerType.this);
                     mRecyclerView.setLayoutManager(layoutManager);
                     mRecyclerView.setHasFixedSize(true);
 
