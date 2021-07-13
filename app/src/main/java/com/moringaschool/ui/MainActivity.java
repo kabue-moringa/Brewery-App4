@@ -1,4 +1,4 @@
-package com.moringaschool.brewer_app;
+package com.moringaschool.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,7 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.moringaschool.brewer_app.CompanyActivity;
+import com.moringaschool.brewer_app.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
