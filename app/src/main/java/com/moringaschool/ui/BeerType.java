@@ -29,15 +29,14 @@ import retrofit2.Response;
 
 
 public class  BeerType extends AppCompatActivity {
-    @BindView(R.id.breweryrecyclerview)
-    RecyclerView mRecyclerView;
-    @BindView(R.id.errorTextView)
-    TextView mErrorTextView;
-    @BindView(R.id.progressBar)
-    ProgressBar mProgressBar;
+    @BindView(R.id.breweryrecyclerview)RecyclerView mRecyclerView;
+
+    @BindView(R.id.errorTextView)TextView mErrorTextView;
+
+    @BindView(R.id.progressBar)ProgressBar mProgressBar;
 
     private BeerAdapter mAdapter;
-    public String mbrewery_type;
+    private List<BreweriesResponse> BreweryType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +45,7 @@ public class  BeerType extends AppCompatActivity {
         ButterKnife.bind(this);
 
         BreweryApi client = BreweryClient.getClient();
-        Call<BreweriesResponse> call = client.getBreweryType();
+        Call<BreweriesResponse> call = client.getBreweriesResponse();
 
         call.enqueue(new Callback<BreweriesResponse>() {
             @Override
@@ -54,8 +53,8 @@ public class  BeerType extends AppCompatActivity {
                 hideProgressBar();
 
                 if (response.isSuccessful()) {
-                    mbrewery_type = response.body().getBreweryType();
-                    mAdapter = new BeerAdapter(BeerType.this, mbrewery_type);
+                    BreweryType = response.body().getBreweriesResponse();
+                    mAdapter = new BeerAdapter(BeerType.this, BreweryType);
                     mRecyclerView.setAdapter(mAdapter);
                     RecyclerView.LayoutManager layoutManager =
                             new LinearLayoutManager(BeerType.this);

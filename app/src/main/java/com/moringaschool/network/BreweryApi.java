@@ -9,7 +9,7 @@ import retrofit2.http.GET;
 public interface BreweryApi {
 
     @GET("breweries")
-    Call<BreweriesResponse>getBreweryType(
+    Call<BreweriesResponse>getBreweriesResponse(
 
     );
 }

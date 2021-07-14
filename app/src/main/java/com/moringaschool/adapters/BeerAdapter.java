@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.moringaschool.models.BreweriesResponse;
 import com.moringaschool.brewer_app.R;
-import com.squareup.picasso.Picasso;
 //import com.moringaschool.brewerydb.R;
 
 import java.util.List;
@@ -20,13 +19,11 @@ import butterknife.ButterKnife;
 
 public class BeerAdapter extends RecyclerView.Adapter<BeerAdapter.BeerViewHolder> {
 
-    private List<BreweriesResponse> mbrewery_type;
+    private List<BreweriesResponse> BreweryType;
     private Context mContext;
-
-
-    public BeerAdapter(Context context, String mbrewery_type) {
-        mContext = context;
-        mbrewery_type = mbrewery_type;
+    public BeerAdapter(Context context, List<BreweriesResponse> BreweryType) {
+      this.mContext = context;
+      this.BreweryType = BreweryType;
     }
 
     @Override
@@ -38,13 +35,13 @@ public class BeerAdapter extends RecyclerView.Adapter<BeerAdapter.BeerViewHolder
 
     @Override
     public void onBindViewHolder( BeerAdapter.BeerViewHolder holder, int position) {
-        holder.bindBeerAdapter(mbrewery_type.get(position));
+        holder.bindBeerAdapter(BreweryType.get(position));
 
     }
 
     @Override
     public int getItemCount() {
-        return mbrewery_type.size();
+        return BreweryType.size();
     }
 
     public class BeerViewHolder extends RecyclerView.ViewHolder {
@@ -59,7 +56,6 @@ public class BeerAdapter extends RecyclerView.Adapter<BeerAdapter.BeerViewHolder
 //        @BindView(R.id.textphone) TextView mphone;
 
         @BindView(R.id.textaddress) TextView maddress;
-
 
 
         private Context mcontext;
