@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,6 +20,7 @@ import com.moringaschool.network.BreweryApi;
 import com.moringaschool.network.BreweryClient;
 import com.moringaschool.ui.MainActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -30,13 +32,12 @@ import retrofit2.Response;
 
 public class  BeerType extends AppCompatActivity {
     @BindView(R.id.breweryrecyclerview)RecyclerView mRecyclerView;
-
     @BindView(R.id.errorTextView)TextView mErrorTextView;
-
+    LinearLayoutManager layoutManager;
     @BindView(R.id.progressBar)ProgressBar mProgressBar;
 
     private BeerAdapter mAdapter;
-    private List<BreweriesResponse> BreweryType;
+    private List<BreweriesResponse> BreweryType = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,37 +45,56 @@ public class  BeerType extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        BreweryApi client = BreweryClient.getClient();
-        Call<BreweriesResponse> call = client.getBreweriesResponse();
+        layoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(layoutManager);
+        mAdapter = new BeerAdapter(BreweryType);
+        mRecyclerView.setAdapter(mAdapter);
 
-        call.enqueue(new Callback<BreweriesResponse>() {
-            @Override
-            public void onResponse(Call<BreweriesResponse>call, Response<BreweriesResponse> response) {
-                hideProgressBar();
-
-                if (response.isSuccessful()) {
-                    BreweryType = response.body().getBreweriesResponse();
-                    mAdapter = new BeerAdapter(BeerType.this, BreweryType);
-                    mRecyclerView.setAdapter(mAdapter);
-                    RecyclerView.LayoutManager layoutManager =
-                            new LinearLayoutManager(BeerType.this);
-                    mRecyclerView.setLayoutManager(layoutManager);
-                    mRecyclerView.setHasFixedSize(true);
-
-                    showBreweriesResponse();
-                } else {
-                    showUnsuccessfulMessage();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<BreweriesResponse> call, Throwable t) {
-                hideProgressBar();
-                showFailureMessage();
-            }
-
-        });
+        fetchPosts();
     }
+
+//        BreweryApi client = BreweryClient.getClient();
+//        Call<BreweriesResponse> call = client.getBreweriesResponse();
+        private void fetchPosts(){
+            mProgressBar.setVisibility(View.VISIBLE);
+            BreweryClient.getClient().getBreweriesResponse().enqueue(new Callback<List<BreweriesResponse>>() {
+                @Override
+                public void onResponse(Call<List<BreweriesResponse>> call, Response<List<BreweriesResponse>> response) {
+
+//                    hideProgressBar();
+                    if (response.isSuccessful() && response.body() !=null)  {
+                        BreweryType.addAll(response.body());
+                        mAdapter.notifyDataSetChanged();
+                        mProgressBar.setVisibility(View.GONE);
+
+//                        BreweryType = response.body().getBreweriesResponse();
+//                        mAdapter = new BeerAdapter(BeerType.this, BreweryType);
+//                        mRecyclerView.setAdapter(mAdapter);
+//                        RecyclerView.LayoutManager layoutManager =
+//                                new LinearLayoutManager(BeerType.this);
+//                        mRecyclerView.setLayoutManager(layoutManager);
+//                        mRecyclerView.setHasFixedSize(true);
+
+//                        showBreweriesResponse();
+                    }
+
+                    }
+
+
+                @Override
+                public void onFailure(Call<List<BreweriesResponse>> call, Throwable t) {
+
+                    mProgressBar.setVisibility(View.GONE);
+                    Toast.makeText(BeerType.this,"Error "+ t.getMessage(),Toast.LENGTH_SHORT).show();
+                }
+
+
+
+
+
+            });
+        }
+
 
     private void showFailureMessage() {
         mErrorTextView.setText("Something went wrong. Please check your Internet connection and try again later");

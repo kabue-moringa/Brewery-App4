@@ -19,7 +19,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/textid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="10dp"
@@ -39,12 +39,6 @@
             android:text="brewery_type" />
 
 
-        <TextView
-            android:id="@+id/textphone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:text="phone"/>
 
         <TextView
             android:id="@+id/textaddress"
@@ -52,10 +46,17 @@
             android:layout_height="wrap_content"
             android:maxLines="4"
             android:text="address" />
+        <TextView
+            android:id="@+id/textprovince"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CountyProvince" />
+
 
 
 
     </LinearLayout>
+
 
 
 </RelativeLayout>

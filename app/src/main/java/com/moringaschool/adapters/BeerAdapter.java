@@ -26,16 +26,23 @@ public class BeerAdapter extends RecyclerView.Adapter<BeerAdapter.BeerViewHolder
       this.BreweryType = BreweryType;
     }
 
+    public BeerAdapter(List<BreweriesResponse> breweryType) {
+        this.BreweryType = BreweryType;
+    }
+
     @Override
     public BeerViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent .getContext()).inflate(R.layout.brewery_type, parent,false);
-        BeerViewHolder ViewHolder = new BeerViewHolder(view);
-        return ViewHolder;
+//        BeerViewHolder ViewHolder = new BeerViewHolder(view);
+        return  new BeerViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder( BeerAdapter.BeerViewHolder holder, int position) {
-        holder.bindBeerAdapter(BreweryType.get(position));
+        holder.mobdb_id.setText(BreweryType.get(position).getId());
+        holder.mname.setText(BreweryType.get(position).getName());
+        holder.mbrewery_type.setText(BreweryType.get(position).getBreweryType());
+        holder.maddress.setText(BreweryType.get(position).getPostalCode());
 
     }
 
@@ -47,13 +54,11 @@ public class BeerAdapter extends RecyclerView.Adapter<BeerAdapter.BeerViewHolder
     public class BeerViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.imageView)  ImageView imageView;
 
-        @BindView(R.id.textView)TextView mTextView;
+        @BindView(R.id.textid)TextView mobdb_id;
 
         @BindView(R.id.textname)TextView mname;
 
         @BindView(R.id.brewery) TextView mbrewery_type;
-
-//        @BindView(R.id.textphone) TextView mphone;
 
         @BindView(R.id.textaddress) TextView maddress;
 
@@ -67,10 +72,9 @@ public class BeerAdapter extends RecyclerView.Adapter<BeerAdapter.BeerViewHolder
             mContext = itemView.getContext();
         }
 
-        public void bindBeerAdapter(BreweriesResponse BeerAdapter) {
-            mname.setText(BeerAdapter.getName());
-            mbrewery_type.setText(BeerAdapter.getBreweryType());
-//            maddress.setText(BeerAdapter.getAddress2());
+//        public void bindBeerAdapter(BreweriesResponse BeerAdapter) {
+//            mname.setText(BeerAdapter.getName());
+//            mbrewery_type.setText(BeerAdapter.getBreweryType());
+//
         }
     }
-}
