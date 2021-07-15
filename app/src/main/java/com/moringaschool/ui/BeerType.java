@@ -49,33 +49,23 @@ public class  BeerType extends AppCompatActivity {
         mRecyclerView.setLayoutManager(layoutManager);
         mAdapter = new BeerAdapter(BreweryType);
         mRecyclerView.setAdapter(mAdapter);
+        mProgressBar = findViewById(R.id.progressBar);
 
         fetchPosts();
     }
 
-//        BreweryApi client = BreweryClient.getClient();
-//        Call<BreweriesResponse> call = client.getBreweriesResponse();
         private void fetchPosts(){
             mProgressBar.setVisibility(View.VISIBLE);
             BreweryClient.getClient().getBreweriesResponse().enqueue(new Callback<List<BreweriesResponse>>() {
                 @Override
                 public void onResponse(Call<List<BreweriesResponse>> call, Response<List<BreweriesResponse>> response) {
 
-//                    hideProgressBar();
+
                     if (response.isSuccessful() && response.body() !=null)  {
                         BreweryType.addAll(response.body());
                         mAdapter.notifyDataSetChanged();
                         mProgressBar.setVisibility(View.GONE);
 
-//                        BreweryType = response.body().getBreweriesResponse();
-//                        mAdapter = new BeerAdapter(BeerType.this, BreweryType);
-//                        mRecyclerView.setAdapter(mAdapter);
-//                        RecyclerView.LayoutManager layoutManager =
-//                                new LinearLayoutManager(BeerType.this);
-//                        mRecyclerView.setLayoutManager(layoutManager);
-//                        mRecyclerView.setHasFixedSize(true);
-
-//                        showBreweriesResponse();
                     }
 
                     }
@@ -87,25 +77,16 @@ public class  BeerType extends AppCompatActivity {
                     mProgressBar.setVisibility(View.GONE);
                     Toast.makeText(BeerType.this,"Error "+ t.getMessage(),Toast.LENGTH_SHORT).show();
                 }
-
-
-
-
-
             });
         }
-
-
     private void showFailureMessage() {
         mErrorTextView.setText("Something went wrong. Please check your Internet connection and try again later");
         mErrorTextView.setVisibility(View.VISIBLE);
     }
-
     private void showUnsuccessfulMessage() {
         mErrorTextView.setText("Something went wrong. Please try again later");
         mErrorTextView.setVisibility(View.VISIBLE);
     }
-
     private void showBreweriesResponse() {
         mRecyclerView.setVisibility(View.VISIBLE);
     }

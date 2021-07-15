@@ -28,8 +28,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mFindCompanyButton = (Button)findViewById(R.id.findCompanyButton);
-//        name=findViewById(R.id.editText);
-//        company=findViewById(R.id.login);
 
         ButterKnife.bind(this);
 
@@ -38,8 +36,6 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
 
             Intent intent = new Intent(MainActivity.this, CompanyActivity.class);
-//           intent.putExtra("name",name.getText().toString());
-//          intent.putExtra("company",name.getText().toString());
            startActivity(intent);
 
 
