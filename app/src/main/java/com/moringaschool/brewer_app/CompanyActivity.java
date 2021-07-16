@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class CompanyActivity  extends AppCompatActivity {
+public class CompanyActivity  extends AppCompatActivity  {
     private ListView mListView;
     private String[] companies = new String[] {"Anheuser-Busch InBev.", "Tsingtao Brewery Group.",
             "Carlsberg", "Groupe Castel", "Molson Coors Brewing", "Heineken",

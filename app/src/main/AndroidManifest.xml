@@ -13,14 +13,25 @@
         android:theme="@style/Theme.BrewerApp">
         <activity
             android:name=".CompanyActivity2"
-            android:parentActivityName=".CompanyActivity"></activity>
-        <activity android:name=".CompanyActivity" />
+            android:parentActivityName=".CompanyActivity">
 
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.moringaschool.brewer_app.com.moringaschool.ui.MainActivity"></meta-data>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.moringaschool.brewer_app.CompanyActivity">
+
+            </meta-data>
+        </activity>
+        <activity android:name=".CompanyActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.moringaschool.ui.MainActivity">
+
+            </meta-data>
+        </activity>
 
         <activity android:name="com.moringaschool.ui.MainActivity">
+
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
