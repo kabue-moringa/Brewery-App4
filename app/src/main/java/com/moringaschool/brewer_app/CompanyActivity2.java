@@ -5,7 +5,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
@@ -16,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.moringaschool.adapters.BeerAdapter;
+import com.moringaschool.brewerydb.Constants;
 import com.moringaschool.models.BreweriesResponse;
 import com.moringaschool.network.BreweryApi;
 import com.moringaschool.network.BreweryClient;
@@ -32,7 +36,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class CompanyActivity2 extends AppCompatActivity {
-
+//    sharedPrefernces.
+    private SharedPreferences mSharedPreferences;
+    private String mRecentAddress;
     TextView textView;
     RecyclerView recyclerView;
     ProgressBar progressBar;
@@ -50,6 +56,11 @@ public class CompanyActivity2 extends AppCompatActivity {
         mAdapter = new BeerAdapter(TypeOfBreweries);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(mAdapter);
+//        shared preference
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
+//        Log.d("Shared Pref Location", mRecentAddress); changing it to String location.
+        String location = mRecentAddress;
 
         fetchPosts();
     }
