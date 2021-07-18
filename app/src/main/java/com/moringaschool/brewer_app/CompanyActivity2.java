@@ -37,8 +37,8 @@ import retrofit2.Response;
 
 public class CompanyActivity2 extends AppCompatActivity {
 //    sharedPrefernces.
-    private SharedPreferences mSharedPreferences;
-    private String mRecentAddress;
+//    private SharedPreferences mSharedPreferences;
+//    private String mRecentAddress;
     TextView textView;
     RecyclerView recyclerView;
     ProgressBar progressBar;
@@ -57,10 +57,12 @@ public class CompanyActivity2 extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(mAdapter);
 //        shared preference
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
+//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
 //        Log.d("Shared Pref Location", mRecentAddress); changing it to String location.
-        String location = mRecentAddress;
+//        String location = mRecentAddress;
+        Intent intent = new Intent();
+        String location = intent.getStringExtra("location");
 
         fetchPosts();
     }
