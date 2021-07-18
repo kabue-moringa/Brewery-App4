@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.moringaschool.brewer_app.CompanyActivity;
 import com.moringaschool.brewer_app.R;
 import com.moringaschool.brewerydb.Constants;
@@ -19,9 +21,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
-
-    private SharedPreferences mSharedPreferences;
-    private SharedPreferences.Editor mEditor;
+    private DatabaseReference mSearchedLocationReference;
+//    private SharedPreferences mSharedPreferences;
+//    private SharedPreferences.Editor mEditor;
 //    @BindView(R.id.locationEditText) EditText mLocationEditText;
     @BindView(R.id.findCompanyButton) Button mFindCompanyButton;;
     @BindView(R.id.textView)
@@ -33,12 +35,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        mSearchedLocationReference = FirebaseDatabase
+                .getInstance()
+                .getReference()
+                .child(Constants.FIREBASE_CHILD_SEARCHED_LOCATION);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mFindCompanyButton = (Button)findViewById(R.id.findCompanyButton);
         ButterKnife.bind(this);
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        mEditor = mSharedPreferences.edit();
+//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        mEditor = mSharedPreferences.edit();
 
     mFindCompanyButton.setOnClickListener(new View.OnClickListener() {
 
@@ -46,18 +53,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         public void onClick(View v) {
             if(v ==mFindCompanyButton) {
                 String location = mLocationEditText.getText().toString();
-                if(!(location).equals("")) {
-                    addToSharedPreferences(location);
-                }
+                saveLocationToFirebase(location);
+//                if(!(location).equals("")) {
+//                    addToSharedPreferences(location);
+//                }
                 Intent intent = new Intent(MainActivity.this, CompanyActivity.class);
                 startActivity(intent);
             }
 
         }
-
-        private void addToSharedPreferences(String location) {
-            mEditor.putString(Constants.PREFERENCES_LOCATION_KEY, location).apply();
+        public void saveLocationToFirebase(String location){
+            mSearchedLocationReference.setValue(location);
         }
+
+//        private void addToSharedPreferences(String location) {
+//            mEditor.putString(Constants.PREFERENCES_LOCATION_KEY, location).apply();
+//        }
 
     });
     }
