@@ -25,39 +25,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @BindView(R.id.findCompanyButton) Button mFindCompanyButton;;
     @BindView(R.id.textView)
-    TextView mAppNameTextView;
+//    TextView mAppNameTextView;
 
     EditText name;
     EditText company;
-    
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        mSearchedCompanyReference = FirebaseDatabase
-                .getInstance()
-                .getReference()
-                .child(Constants.FIREBASE_CHILD_SEARCHED_COMPANY);
+//        mSearchedCompanyReference = FirebaseDatabase
+//                .getInstance()
+//                .getReference()
+//                .child(Constants.FIREBASE_CHILD_SEARCHED_COMPANY);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mFindCompanyButton = (Button)findViewById(R.id.findCompanyButton);
-        ButterKnife.bind(this);
+//        ButterKnife.bind(this);
 ;
     mFindCompanyButton.setOnClickListener(new View.OnClickListener() {
-
         @Override
         public void onClick(View v) {
             if(v ==mFindCompanyButton) {
-                String location = company.getText().toString();
-                saveCompanyToFirebase(company);
-
+                String Company = company.getText().toString();
+                saveCompanyToFirebase(Company);
                 Intent intent = new Intent(MainActivity.this, CompanyActivity.class);
                 startActivity(intent);
             }
 
         }
-        public void saveCompanyToFirebase(EditText company){
+        public void saveCompanyToFirebase(String company){
             mSearchedCompanyReference.push().setValue(company);
         }
 

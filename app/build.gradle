@@ -1,6 +1,5 @@
 plugins {
     id 'com.android.application'
-    id 'com.google.gms.google-services'
 }
 
 android {
@@ -63,10 +62,10 @@ android {
         implementation 'com.google.firebase:firebase-analytics'
         implementation 'com.google.firebase:firebase-database'
 
+//        firebase recyclerView
+        implementation 'com.google.firebase:firebase-database'
+        implementation 'com.firebaseui:firebase-ui-database:7.1.1'
+
 
     }
-}
-
-dependencies {
-    implementation 'com.google.firebase:firebase-database:19.2.1'
 }
