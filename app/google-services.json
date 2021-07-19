@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "70373379331",
+    "firebase_url": "https://brewer-app-54717-default-rtdb.firebaseio.com",
+    "project_id": "brewer-app-54717",
+    "storage_bucket": "brewer-app-54717.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:70373379331:android:27fa324b323f00e9df2d36",
+        "android_client_info": {
+          "package_name": "com.moringaschool.brewer_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "70373379331-p99k5bmb6tgnaj6m8unvqp6d30bhm8v2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLFxq7HBQRkHyYQ41eOeB6JqTrMNkDqrM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "70373379331-p99k5bmb6tgnaj6m8unvqp6d30bhm8v2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
