@@ -1,7 +1,9 @@
 package com.moringaschool.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,6 +13,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.moringaschool.brewer_app.CompanyActivity;
+import com.moringaschool.brewer_app.R;
 import com.moringaschool.brewerydb.Constants;
 import com.moringaschool.models.BreweriesResponse;
 
@@ -28,7 +32,8 @@ public class FirebaseCompanyViewHolder extends RecyclerView.ViewHolder implement
         itemView.setOnClickListener(this);
 
     }
-    public void bindCompany(){
+    public void bindBreweriesResponse(BreweriesResponse TypeOfBrewery){
+        TextView TypeOfBreweries = (TextView)mVeiw.findViewById(R.id.TypeOfBreweries);
 
     }
 
@@ -41,10 +46,13 @@ public class FirebaseCompanyViewHolder extends RecyclerView.ViewHolder implement
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    company.add(snapshot.getValue(BreweriesResponse.class));
+                    TypeOfBreweries.add(snapshot.getValue(BreweriesResponse.class));
                 }
 
-
+                int itemPosition = getLayoutPosition();
+                Intent intent = new Intent(mContext, CompanyActivity.class);
+                intent.putExtra("position", itemPosition + "");
+                mContext.startActivity(intent);
             }
 
             @Override
