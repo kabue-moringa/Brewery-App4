@@ -84,6 +84,7 @@ public class SavedCompanyListActivity extends AppCompatActivity {
         }
     }
     private void showCompanys() {
+
         mRecyclerView.setVisibility(View.VISIBLE);
     }
 

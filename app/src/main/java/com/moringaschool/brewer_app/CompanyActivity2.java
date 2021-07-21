@@ -36,6 +36,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class CompanyActivity2 extends AppCompatActivity {
+
 //    sharedPrefernces.
 //    private SharedPreferences mSharedPreferences;
 //    private String mRecentAddress;
