@@ -22,7 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FirebaseCompanyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-    View mVeiw;
+    private static View mVeiw;
+//    View mVeiw;
     Context mContext;
 
     public FirebaseCompanyViewHolder(View itemView) {
@@ -32,8 +33,8 @@ public class FirebaseCompanyViewHolder extends RecyclerView.ViewHolder implement
         itemView.setOnClickListener(this);
 
     }
-    public void bindBreweriesResponse(BreweriesResponse TypeOfBrewery){
-        TextView TypeOfBreweries = (TextView)mVeiw.findViewById(R.id.TypeOfBreweries);
+    public static void bindBreweriesResponse(BreweriesResponse TypeOfBrewery){
+        TextView TypeOfBreweries = (TextView) mVeiw.findViewById(R.id.TypeOfBreweries);
 
     }
 

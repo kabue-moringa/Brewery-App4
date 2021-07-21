@@ -22,6 +22,7 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     private DatabaseReference mSearchedCompanyReference;
+    @BindView(R.id.savedCompanyButton) Button mSavedCompanyButton;
 
     @BindView(R.id.findCompanyButton) Button mFindCompanyButton;;
     @BindView(R.id.textView)
@@ -32,10 +33,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-//        mSearchedCompanyReference = FirebaseDatabase
-//                .getInstance()
-//                .getReference()
-//                .child(Constants.FIREBASE_CHILD_SEARCHED_COMPANY);
+        mSearchedCompanyReference = FirebaseDatabase
+                .getInstance()
+                .getReference()
+                .child(Constants.FIREBASE_CHILD_SEARCHED_COMPANY);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        ButterKnife.bind(this);
 ;
     mFindCompanyButton.setOnClickListener(new View.OnClickListener() {
+
         @Override
         public void onClick(View v) {
             if(v ==mFindCompanyButton) {

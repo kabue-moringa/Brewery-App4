@@ -43,7 +43,7 @@
         android:padding="5dp"
         android:textStyle="bold"
         android:ems="10"
-        android:layout_above="@id/findCompanyButton"
+
         android:textColor="@color/white"
         android:hint="enter your name" />
     <EditText
@@ -59,11 +59,25 @@
         android:padding="5dp"
         android:textStyle="bold"
         android:ems="10"
-        android:layout_above="@id/findCompanyButton"
+        android:layout_above="@id/editText"
         android:textColor="@color/white"
         android:hint="enter company" />
     <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Find Company"
         android:id="@+id/findCompanyButton"
+        android:background="@color/purple_200"
+        android:textColor="@color/teal_700"
+        android:visibility="visible"
+        android:layout_above="@id/login"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="90dp"
+        android:padding="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="10dp" />
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -84,5 +98,18 @@
         android:visibility="gone"
         android:id="@+id/errorTextView"
         android:text="error message!" />
+
+
+
+    <!--        android:id="@+id/findCompanyButton"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@color/purple_200"-->
+<!--        android:visibility="visible"-->
+<!--        android:layout_alignParentLeft="true"-->
+<!--        android:layout_alignParentStart="true"-->
+<!--        android:layout_marginBottom="10dp"-->
+<!--        android:layout_above="@+id/savedCompanyButton"-->
+<!--        android:text="Button" />-->
 
 </RelativeLayout>
