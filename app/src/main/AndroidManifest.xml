@@ -11,18 +11,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BrewerApp">
-        <activity android:name="com.moringaschool.ui.SavedCompanyListActivity"></activity>
+        <activity android:name="com.moringaschool.ui.CreateAccountActivity"></activity>
+        <activity android:name="com.moringaschool.ui.SavedCompanyListActivity" />
         <activity
             android:name=".CompanyActivity2"
             android:parentActivityName=".CompanyActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.moringaschool.brewer_app.CompanyActivity"></meta-data>
+                android:value="com.moringaschool.brewer_app.CompanyActivity" />
         </activity>
         <activity android:name=".CompanyActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.moringaschool.ui.MainActivity"></meta-data>
+                android:value="com.moringaschool.ui.MainActivity" />
         </activity>
         <activity android:name="com.moringaschool.ui.MainActivity">
             <intent-filter>

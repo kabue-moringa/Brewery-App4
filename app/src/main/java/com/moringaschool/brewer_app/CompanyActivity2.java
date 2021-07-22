@@ -104,8 +104,6 @@ public class CompanyActivity2 extends AppCompatActivity {
     private void addToSharedPreferences(String country) {
         mEditor.putString(Constants.PREFERENCES_COMPANY_KEY,country).apply();
     }
-    ;
-    //IP2
     private void fetchPosts(){
         progressBar.setVisibility(View.VISIBLE);
         BreweryClient.getClient().getBreweriesResponse().enqueue(new Callback<List<BreweriesResponse>>() {
@@ -121,6 +119,7 @@ public class CompanyActivity2 extends AppCompatActivity {
             }
 
             private void hideProgressBar() {
+
             }
 
             @Override
