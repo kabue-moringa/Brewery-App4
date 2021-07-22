@@ -31,17 +31,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-//        mSearchedCompanyReference = FirebaseDatabase
-//                .getInstance()
-//                .getReference()
-//                .child(Constants.FIREBASE_CHILD_SEARCHED_COMPANY);
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mFindCompanyButton = (Button)findViewById(R.id.findCompanyButton);
 //        ButterKnife.bind(this);
 
-;  mFindCompanyButton.setOnClickListener(this);
+//;  mFindCompanyButton.setOnClickListener(this);
  mSavedCompanyButton.setOnClickListener(this);
     mFindCompanyButton.setOnClickListener(new View.OnClickListener() {
 

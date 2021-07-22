@@ -83,6 +83,7 @@ public class CompanyActivity2 extends AppCompatActivity {
         MenuItem menuItem = menu.findItem(R.id.search_badge);
         SearchView searchView = (SearchView) menuItem.getActionView();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
+
             @Override
             public boolean onQueryTextSubmit(String company) {
                 addToSharedPreferences(company);
@@ -112,8 +113,6 @@ public class CompanyActivity2 extends AppCompatActivity {
         finish();
 
     }
-
-
     private void fetchPosts(String company) {
         fetchPosts();
     }
