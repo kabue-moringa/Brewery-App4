@@ -11,6 +11,23 @@
         android:layout_centerInParent="true"
         android:layout_height="wrap_content" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:text="recyclerview text"
+        android:id="@+id/breweryrecyclerview"
+        android:visibility="gone"/>
+    <TextView
+        android:id="@+id/errorTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="mic check"
+        android:layout_margin="16dp"
+        android:visibility="gone" />
+
 
     <ImageView
         android:id="@+id/imageView"
