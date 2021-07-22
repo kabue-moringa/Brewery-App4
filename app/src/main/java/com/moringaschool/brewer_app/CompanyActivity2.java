@@ -18,10 +18,12 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.moringaschool.adapters.BeerAdapter;
 import com.moringaschool.brewerydb.Constants;
 import com.moringaschool.models.BreweriesResponse;
 import com.moringaschool.network.BreweryClient;
+import com.moringaschool.ui.LoginActivity;
 
 
 import java.util.ArrayList;
@@ -96,8 +98,22 @@ public class CompanyActivity2 extends AppCompatActivity {
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
+        int id = item.getItemId();
+        if (id == R.id.action_logout){
+            logout();
+        }
         return super.onOptionsItemSelected(item);
     }
+    private void logout() {
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(CompanyActivity2.this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+
+    }
+
+
     private void fetchPosts(String company) {
         fetchPosts();
     }
