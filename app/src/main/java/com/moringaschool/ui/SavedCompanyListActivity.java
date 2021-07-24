@@ -61,7 +61,7 @@ public class SavedCompanyListActivity extends AppCompatActivity {
             @NonNull
             @Override
             public FirebaseCompanyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.brewery_type, parent, false);
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.company_list_item_drag, parent, false);
                 return new FirebaseCompanyViewHolder(view);
             }
         };
