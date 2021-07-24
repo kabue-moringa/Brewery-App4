@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FirebaseCompanyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static View mCompanyImageView;
     private static View mVeiw;
 //    View mVeiw;
     Context mContext;
