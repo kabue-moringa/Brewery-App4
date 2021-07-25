@@ -1,6 +1,7 @@
 package com.moringaschool.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -21,6 +22,7 @@ import com.moringaschool.adapters.FirebaseCompanyViewHolder;
 import com.moringaschool.brewer_app.CompanyActivity;
 import com.moringaschool.brewer_app.R;
 import com.moringaschool.models.BreweriesResponse;
+import com.moringaschool.models.Company;
 import com.moringaschool.ui.SavedCompanyListActivity;
 
 import java.net.HttpCookie;
@@ -38,16 +40,14 @@ public class FirebaseCompanyListAdapter extends FirebaseRecyclerAdapter<Brewerie
     private OnStartDragListener mOnStartDragListener;
     private Context mContext;
 
+
     private ChildEventListener mChildEventListener;
     private ArrayList<BreweriesResponse> mCompany = new ArrayList<>();
 
-    public FirebaseCompanyListAdapter(FirebaseRecyclerOptions<BreweriesResponse> options,
-                                         DatabaseReference ref,
-                                         OnStartDragListener onStartDragListener,
-                                         Context context){
+    public  FirebaseCompanyListAdapter(FirebaseRecyclerOptions<BreweriesResponse> options, Query ref, SavedCompanyListActivity onStartDragListener, Context context){
         super(options);
         mRef = ref.getRef();
-        mOnStartDragListener = onStartDragListener;
+        mOnStartDragListener = (OnStartDragListener) onStartDragListener;
         mContext = context;
 
         mChildEventListener = mRef.addChildEventListener(new ChildEventListener() {
@@ -78,24 +78,12 @@ public class FirebaseCompanyListAdapter extends FirebaseRecyclerAdapter<Brewerie
         });
     };
 
-    @Override
-    public boolean onItemMove(int fromPosition, int toPosition) {
-        Collections.swap(mCompany, fromPosition, toPosition);
-        notifyItemMoved(fromPosition, toPosition);
-        return false;
-    }
 
     @Override
-    public void onItemDismiss(int position) {
-        mCompany.remove(position);
-        getRef(position).removeValue();
-
-    }
-    @Override
-    protected void onBindViewHolder(@NonNull FirebaseCompanyViewHolder holder, int position, @NonNull BreweriesResponse model) {
+    protected void onBindViewHolder( FirebaseCompanyViewHolder holder, int position, @NonNull BreweriesResponse model) {
         FirebaseCompanyViewHolder.bindBreweriesResponse(model);
-
         FirebaseCompanyViewHolder.mCompanyImageView.setOnTouchListener(new View.OnTouchListener() {
+
             private Object FirebaseCompanyViewHolder;
 
             @Override
@@ -106,12 +94,59 @@ public class FirebaseCompanyListAdapter extends FirebaseRecyclerAdapter<Brewerie
                 return false;
             }
         });
+        FirebaseCompanyViewHolder.itemView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, CompanyActivity.class);
+//                intent.putExtra("position", FirebaseCompanyViewHolder.getAdapterPosition());
+                mContext.startActivity(intent);
+            }
+        });
     }
-
+    @NonNull
     @Override
     public FirebaseCompanyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.company_list_item_drag, parent, false);
         return new FirebaseCompanyViewHolder(view);
+    }
+    
+    @Override
+    public boolean onItemMove(int fromPosition, int toPosition) {
+        Collections.swap(mCompany, fromPosition, toPosition);
+        notifyItemMoved(fromPosition, toPosition);
+        setIndexInForebase();
+        return false;
+    }
 
+    @Override
+
+    public void onItemDismiss(int position) {
+        mCompany.remove(position);
+        getRef(position).removeValue();
+    }
+    private void setIndexInForebase() {
+
+        for(BreweriesResponse BreweriesTesponse: mCompany){
+            int index = mCompany.indexOf(BreweriesTesponse);
+            DatabaseReference mReference = getRef(index);
+            BreweriesTesponse.setIndex(Integer.toString(index));
+            mReference.setValue(BreweriesTesponse);
+        }
+    }
+    @Override
+    public void stopListening(){
+        super.stopListening();
+        mRef.removeEventListener(mChildEventListener);
     }
 }
+
+
+
+
+
+
+
+
+
+
+

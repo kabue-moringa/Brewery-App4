@@ -255,4 +255,6 @@ public class BreweriesResponse {
         this.createdAt = createdAt;
     }
 
+    public void setIndex(String toString) {
+    }
 }

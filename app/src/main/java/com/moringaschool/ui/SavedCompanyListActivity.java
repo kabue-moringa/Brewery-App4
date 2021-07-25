@@ -71,9 +71,9 @@ public class SavedCompanyListActivity extends AppCompatActivity {
                 new FirebaseRecyclerOptions.Builder<BreweriesResponse>()
                         .setQuery(mCompanyReference, BreweriesResponse.class)
                         .build();
-        mFirebaseAdapter = new FirebaseCompanyListAdapter(options, query,this,this);
 
-        mFirebaseAdapter = new FirebaseCompanyListAdapter(options, mCompanyReference, (OnStartDragListener) this, this);
+
+        mFirebaseAdapter = new FirebaseCompanyListAdapter(options, mCompanyReference, (SavedCompanyListActivity) this, this);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(mFirebaseAdapter);
