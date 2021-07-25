@@ -32,17 +32,7 @@ public class CompanyActivity  extends AppCompatActivity  {
         String company = intent.getStringExtra("company");
         textView=(TextView)findViewById(R.id.textView2) ;
         textView.setText("Largest Brewies");
-        button=findViewById(R.id.bestBreweriesButton);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                bestBreweriesButton();
 
-            }
-        });
-
-
-//        String company = intent.getStringExtra("location");
     }
 
     private void bestBreweriesButton() {
