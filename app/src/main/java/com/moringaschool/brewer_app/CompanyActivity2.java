@@ -80,7 +80,7 @@ public class CompanyActivity2 extends AppCompatActivity {
         ButterKnife.bind(this);
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mEditor = mSharedPreferences.edit();
-        MenuItem menuItem = menu.findItem(R.id.search_badge);
+        MenuItem menuItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) menuItem.getActionView();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
 
